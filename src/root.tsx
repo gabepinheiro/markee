@@ -1,5 +1,5 @@
 import { theme } from 'resources/theme'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { ThemeProvider, createGlobalStyle, css } from 'styled-components'
 import { App } from './app'
 
 function Root () {
@@ -29,9 +29,12 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
-  body {
-    font-size: 1.6rem;
-  }
+  ${({ theme }) => css`
+    body {
+      font-size: 1.6rem;
+      font-family: ${theme.font.family};
+    }
+  `}
 `
 
 export { Root }

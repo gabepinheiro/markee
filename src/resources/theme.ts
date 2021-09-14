@@ -6,4 +6,9 @@ export const theme = {
     white: '#FAFAFA',
     primary: '#1FC8E1',
   },
+  font: {
+    family: 'DM Sans, sans-serif',
+    normal: 400,
+    bold: 700,
+  },
 }
