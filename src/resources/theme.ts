@@ -10,5 +10,11 @@ export const theme = {
     family: 'DM Sans, sans-serif',
     normal: 400,
     bold: 700,
+    sizes: {
+      xsmall: '1.3rem',
+      small: '1.6rem',
+      medium: '1.8rem',
+      large: '3.2rem',
+    },
   },
 }
