@@ -1,17 +1,16 @@
-import styled, { css } from 'styled-components/macro'
+import { Button } from 'ui/button'
+
+import { ReactComponent as PlusIcon } from 'resources/assets/plus-symbol.svg'
 
 function App () {
   return (
-    <div>
-      <Title>Markee app</Title>
-    </div>
+    <>
+      <Button>
+        <PlusIcon />
+        Adicionar arquivo
+      </Button>
+    </>
   )
 }
-
-const Title = styled.h1`
-  ${({ theme }) => css`
-    color: ${theme.colors.primary}
-  `}
-`
 
 export { App }
