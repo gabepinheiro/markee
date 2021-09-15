@@ -1,15 +1,8 @@
-import { Button } from 'ui/button'
-
-import { ReactComponent as PlusIcon } from 'resources/assets/plus-symbol.svg'
+import { Sidebar } from 'sidebar'
 
 function App () {
   return (
-    <>
-      <Button>
-        <PlusIcon />
-        Adicionar arquivo
-      </Button>
-    </>
+    <Sidebar />
   )
 }
 
