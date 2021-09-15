@@ -17,4 +17,13 @@ export const theme = {
       large: '3.2rem',
     },
   },
+  spacings: {
+    xxsmall: '0.8rem',
+    xsmall: '1.6rem',
+    small: '2.4rem',
+    medium: '3.2rem',
+    large: '3.5rem',
+    xlarge: '4.2rem',
+    xxlarge: '5.6rem',
+  },
 }
