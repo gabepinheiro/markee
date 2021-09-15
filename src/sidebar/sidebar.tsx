@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/macro'
 import { ButtonFullWidth } from 'ui/button'
-import { Logo, PlusIcon } from 'ui/icons'
+import { Logo, PlusIcon, FileIcon } from 'ui/icons'
 
 export function Sidebar () {
   return (
@@ -11,6 +11,29 @@ export function Sidebar () {
         <PlusIcon />
         Adicionar arquivos
       </ButtonFullWidth>
+
+      <ListFile>
+        <File>
+          <FileIcon />
+          <FileName>README.md</FileName>
+        </File>
+        <File>
+          <FileIcon />
+          <FileName>CONTRIBUTING.md</FileName>
+        </File>
+        <File>
+          <FileIcon />
+          <FileName>LICENSE.md</FileName>
+        </File>
+        <File>
+          <FileIcon />
+          <FileName>Links.md</FileName>
+        </File>
+        <File>
+          <FileIcon />
+          <FileName>roadmap.md</FileName>
+        </File>
+      </ListFile>
     </Wrapper>
   )
 }
@@ -61,6 +84,37 @@ const Title = styled.h2`
       content: '';
       flex-grow: 1;
       height: 2px;
+    }
+  `}
+`
+
+const ListFile = styled.ul`
+  list-style: none;
+  width:100%;
+  margin-bottom: 47px;
+`
+
+const FileName = styled.a`
+  ${({ theme }) => css`
+    flex-grow: 1;
+    color: ${theme.colors.white};
+    text-decoration: none;
+    opacity: 0.6;
+  `}
+`
+
+const File = styled.li`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    border-radius: 6px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 14px;
+
+    ${FileIcon} {
+      opacity: 0.6;
     }
   `}
 `
