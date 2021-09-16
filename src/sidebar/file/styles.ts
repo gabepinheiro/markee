@@ -41,6 +41,10 @@ export const File = styled(Wrapper)`
     ${!active && css`
       &:hover {
         background: rgba(255, 255, 255, 0.05);
+
+        ${FileIcon} {
+          opacity: 1;
+        }
       }
 
       &:hover ${FileName} {

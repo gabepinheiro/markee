@@ -7,9 +7,7 @@ type MarkdownEditorProps = {
 export function Wrapper ({ className }: MarkdownEditorProps) {
   return (
     <section className={className}>
-      <S.Markdown>
-        ## Bootcamp React
-      </S.Markdown>
+      <S.Markdown defaultValue='## Bootcamp Brainn Co.' />
     </section>
   )
 }

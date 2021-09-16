@@ -29,6 +29,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
+  #root {
+    width:100%;
+    height: 100vh;
+  }
+
   ${({ theme }) => css`
     body {
       font-size: 1.6rem;

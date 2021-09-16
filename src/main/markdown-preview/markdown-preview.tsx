@@ -15,9 +15,10 @@ function Wrapper ({ className }: MarkdownPreviewProps) {
 
 const MarkdownPreview = styled(Wrapper)`
   ${({ theme }) => css`
-    padding-left: 32px;
-    color: rgba(30, 41, 59, 0.7);
+  color: rgba(30, 41, 59, 0.7);
     font-size: ${theme.font.sizes.medium};
+    padding-left: 32px;
+    height: 95%;
 
     h1 {
       color: ${theme.colors.black};

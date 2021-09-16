@@ -12,7 +12,7 @@ export function Wrapper ({ className }: FileNameSectionProps) {
         <S.Label htmlFor='fileName'>
           <FileIcon />
         </S.Label>
-        <S.InputFileName type='text' id='fileName' value='README.md' />
+        <S.InputFileName type='text' id='fileName' defaultValue='README.md' />
       </S.InputWrapper>
     </section>
   )

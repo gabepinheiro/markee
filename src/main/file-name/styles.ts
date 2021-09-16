@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components'
 
 import { Wrapper } from './file-name'
 
-export const FileNameSection = styled(Wrapper)``
+export const FileNameSection = styled(Wrapper)`
+`
 
 export const InputWrapper = styled.div`
   display: flex;

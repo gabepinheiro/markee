@@ -1,8 +1,14 @@
+import { Sidebar } from 'sidebar'
 import { Main } from 'main'
+
+import * as S from './app-styles'
 
 function App () {
   return (
-    <Main />
+    <S.Container>
+      <Sidebar />
+      <Main />
+    </S.Container>
   )
 }
 
