@@ -1,17 +1,15 @@
-import styled, { css } from 'styled-components/macro'
+import * as S from './app-styles'
+
+import { Sidebar } from 'sidebar'
+import { Content } from 'content'
 
 function App () {
   return (
-    <div>
-      <Title>Markee app</Title>
-    </div>
+    <S.Container>
+      <Sidebar />
+      <Content />
+    </S.Container>
   )
 }
-
-const Title = styled.h1`
-  ${({ theme }) => css`
-    color: ${theme.colors.primary}
-  `}
-`
 
 export { App }
