@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/macro'
-import { Wrapper } from './file'
 
 import { FileIcon } from 'ui/icons'
+import { FileProps } from './types'
 
 export const ButtonDelete = styled.button`
   ${() => css`
@@ -21,7 +21,9 @@ export const FileName = styled.a`
   `}
 `
 
-export const File = styled(Wrapper)`
+type FileItemContainerProps = Pick<FileProps, 'active'>
+
+export const FileItemContainer = styled.li<FileItemContainerProps>`
   ${({ theme, active }) => css`
     color: ${theme.colors.white};
     cursor: pointer;

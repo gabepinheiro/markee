@@ -15,11 +15,11 @@ const statusIcons: StatusIconsProps = {
   saved: <SavedIcon />,
 }
 
-function Wrapper ({
-  children, className, active, status = 'editing',
+function FileItem ({
+  children, active, status = 'editing',
 }: FileProps) {
   return (
-    <li className={className}>
+    <S.FileItemContainer active={active}>
       <FileIcon />
       <S.FileName>{children}</S.FileName>
 
@@ -30,8 +30,8 @@ function Wrapper ({
       )}
 
       {!!active && statusIcons[status]}
-    </li>
+    </S.FileItemContainer>
   )
 }
 
-export { Wrapper }
+export { FileItem }

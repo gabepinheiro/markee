@@ -1,6 +1,6 @@
-import { FileProps } from 'sidebar/file/types'
+import { FileProps } from 'sidebar/file-item/types'
 
-type File = Omit<FileProps, 'children' | 'className'>
+type File = Omit<FileProps, 'children'>
 
 export const files: File[] = [
   {
