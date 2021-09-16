@@ -1,5 +1,5 @@
 import { FileNameSection } from './file-name'
-import { MarkdownEditor } from './markdown-editor/styles'
+import { MarkdownEditor } from './markdown-editor'
 import * as S from './styles'
 
 function Main () {
