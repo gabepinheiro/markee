@@ -24,6 +24,16 @@ export const Button = styled(Wrapper)`
     justify-content: center;
     align-items: center;
     gap: 12px;
+
+    cursor: pointer;
+
+    transition: 300ms ease-in-out;
+
+    &:hover {
+      color: ${theme.colors.primary};
+      background: ${theme.colors.black};
+      border: 1px solid ${theme.colors.primary};
+    }
   `}
 `
 
