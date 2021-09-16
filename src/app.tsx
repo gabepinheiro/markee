@@ -1,8 +1,8 @@
-import { Sidebar } from 'sidebar'
+import { Main } from 'main'
 
 function App () {
   return (
-    <Sidebar />
+    <Main />
   )
 }
 
