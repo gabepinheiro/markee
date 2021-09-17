@@ -7,20 +7,23 @@ import { ListFile } from './list-file'
 import * as S from './styles'
 
 export function Sidebar () {
-  const [files, setFiles] = useState<FileProps[]>([{
-    id: '1',
-    name: 'README.md',
-    content: '## Bootcamp React',
-    active: false,
-    status: 'saved',
-  },
-  {
-    id: '2',
-    name: 'CONTRIBUTING.md',
-    content: '## Como contribuir',
-    active: true,
-    status: 'saved',
-  }])
+  const [files, setFiles] = useState<FileProps[]>([])
+
+  const handleAddFile = () => {
+    const newFile: FileProps = {
+      id: '1',
+      name: 'Sem título',
+      content: '',
+      active: true,
+      status: 'saved',
+    }
+
+    setFiles(prev => {
+      const prevState = prev.map(file => ({ ...file, active: false }))
+
+      return [...prevState, newFile]
+    })
+  }
 
   return (
     <S.Wrapper>
@@ -28,9 +31,9 @@ export function Sidebar () {
 
       <S.Title>Arquivos</S.Title>
 
-      <ButtonFullWidth>
+      <ButtonFullWidth onClick={handleAddFile}>
         <PlusIcon />
-        Adicionar arquivos
+        Adicionar arquivo
       </ButtonFullWidth>
 
       <ListFile files={files} />
