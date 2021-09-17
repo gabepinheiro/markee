@@ -9,6 +9,8 @@ export const ButtonDelete = styled.button`
     border: 0;
     cursor: pointer;
     display: none;
+    margin:0;
+    padding:0;
   }
 `}`
 

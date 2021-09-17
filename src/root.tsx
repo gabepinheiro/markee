@@ -2,6 +2,8 @@ import { theme } from 'resources/theme'
 import { ThemeProvider, createGlobalStyle, css } from 'styled-components'
 import { App } from './app'
 
+import 'normalize.css'
+
 function Root () {
   return (
     <ThemeProvider theme={theme}>
@@ -13,8 +15,6 @@ function Root () {
 
 const GlobalStyle = createGlobalStyle`
   * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
     body {
       font-size: 1.6rem;
       font-family: ${theme.font.family};
+      color: ${theme.colors.black};
     }
   `}
 `

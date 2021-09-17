@@ -9,6 +9,8 @@ export const ContentContainer = styled.main`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 60px auto;
     grid-row-gap: 16px;
+
+    overflow: hidden;
   `}
 `
 
@@ -42,7 +44,7 @@ export const InputFileName = styled.input`
 export const MarkdownEditorContainer = styled.section`
   border-right: 2px solid rgba(30, 41, 59, 0.12);
   height: 95%;
-  padding-right: 32px;
+  /* padding-right: 32px; */
 `
 
 export const MarkdownTextArea = styled.textarea`
@@ -63,14 +65,18 @@ export const MarkdownTextArea = styled.textarea`
 
 export const MarkdownPreview = styled.section`
   ${({ theme }) => css`
-  color: rgba(30, 41, 59, 0.7);
-    font-size: ${theme.font.sizes.medium};
+    font-size: ${theme.font.sizes.small};
     padding-left: 32px;
     height: 95%;
+    overflow: auto;
 
-    h1 {
+    /* h1 {
       color: ${theme.colors.black};
       font-size: ${theme.font.sizes.large};
+    } */
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
     }
   `}
 `
