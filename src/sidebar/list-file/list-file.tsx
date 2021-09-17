@@ -2,9 +2,13 @@ import * as S from './styles'
 
 import { FileItem } from 'sidebar/file-item'
 
-import { files } from './mock'
+import { FileProps } from 'sidebar/file-item/types'
 
-function ListFile () {
+type ListFileProps = {
+  files: FileProps[]
+}
+
+function ListFile ({ files }: ListFileProps) {
   return (
     <S.List>
       {files.map(({ id, name, content, active, status }) => (

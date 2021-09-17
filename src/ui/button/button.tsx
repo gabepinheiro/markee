@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components/macro'
-import { ReactNode } from 'react'
+import { ReactNode, MouseEvent } from 'react'
 
 type ButtonProps = {
   children: ReactNode | ReactNode[]
   className?: string
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-function Wrapper ({ children, className }: ButtonProps) {
-  return <button className={className}>{children}</button>
+function Wrapper ({ children, className, ...rest }: ButtonProps) {
+  return <button {...rest} className={className}>{children}</button>
 }
 
 export const Button = styled(Wrapper)`

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 export type FileProps = {
-  children: ReactNode | ReactNode[]
+  children?: ReactNode | ReactNode[]
   id?: string
   name?: string
   content?: string

@@ -1,22 +1,41 @@
+import { useState } from 'react'
 import { ButtonFullWidth } from 'ui/button'
 import { Logo, PlusIcon } from 'ui/icons'
+import { FileProps } from './file-item/types'
 import { ListFile } from './list-file'
-
+import { v4 as uuidv4 } from 'uuid'
 import * as S from './styles'
 
 export function Sidebar () {
+  const [files, setFiles] = useState<FileProps[]>([])
+
+  const handleAddFile = () => {
+    const newFile: FileProps = {
+      id: uuidv4(),
+      name: 'Sem título',
+      content: '',
+      active: true,
+      status: 'saved',
+    }
+
+    setFiles(prev => {
+      const prevState = prev.map(file => ({ ...file, active: false }))
+      return [...prevState, newFile]
+    })
+  }
+
   return (
     <S.Wrapper>
       <Logo />
 
       <S.Title>Arquivos</S.Title>
 
-      <ButtonFullWidth>
+      <ButtonFullWidth onClick={handleAddFile}>
         <PlusIcon />
-        Adicionar arquivos
+        Adicionar arquivo
       </ButtonFullWidth>
 
-      <ListFile />
+      <ListFile files={files} />
     </S.Wrapper>
   )
 }
