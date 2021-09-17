@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react'
 import { FileIcon } from 'ui/icons'
 import * as S from './styles'
+import marked from 'marked'
 
 function Content () {
   const [content, setContent] = useState('')
@@ -28,9 +29,7 @@ function Content () {
         />
       </S.MarkdownEditorContainer>
 
-      <S.MarkdownPreview>
-        {content}
-      </S.MarkdownPreview>
+      <S.MarkdownPreview dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </S.ContentContainer>
   )
 }
