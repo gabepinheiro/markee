@@ -2,18 +2,22 @@ import { useState, ChangeEvent } from 'react'
 import { FileIcon } from 'ui/icons'
 import * as S from './styles'
 import marked from 'marked'
-import highligt from 'highlight.js'
+// import highligt from 'highlight.js'
 
 import 'highlight.js/styles/github.css'
 
-marked.setOptions({
-  highlight: (code, language) => {
-    if (language && highligt.getLanguage(language)) {
-      return highligt.highlight(code, { language }).value
-    }
+import('highlight.js').then(hljs => {
+  const h = hljs.default
 
-    return highligt.highlightAuto(code).value
-  },
+  marked.setOptions({
+    highlight: (code, language) => {
+      if (language && h.getLanguage(language)) {
+        return h.highlight(code, { language }).value
+      }
+
+      return h.highlightAuto(code).value
+    },
+  })
 })
 
 function Content () {
