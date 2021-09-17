@@ -3,7 +3,7 @@ import { ButtonFullWidth } from 'ui/button'
 import { Logo, PlusIcon } from 'ui/icons'
 import { FileProps } from './file-item/types'
 import { ListFile } from './list-file'
-
+import { v4 as uuidv4 } from 'uuid'
 import * as S from './styles'
 
 export function Sidebar () {
@@ -11,7 +11,7 @@ export function Sidebar () {
 
   const handleAddFile = () => {
     const newFile: FileProps = {
-      id: '1',
+      id: uuidv4(),
       name: 'Sem título',
       content: '',
       active: true,
@@ -20,7 +20,6 @@ export function Sidebar () {
 
     setFiles(prev => {
       const prevState = prev.map(file => ({ ...file, active: false }))
-
       return [...prevState, newFile]
     })
   }
