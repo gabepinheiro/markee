@@ -22,10 +22,11 @@ type SidebarProps = {
   files: FileProps[]
   handleAddFile: () => void
   handleSelectedFile: (file: FileProps) => void
+  handleRemoveFile: (id: string) => void
 }
 
 export function Sidebar ({
-  files, handleAddFile, handleSelectedFile,
+  files, handleAddFile, handleSelectedFile, handleRemoveFile,
 }: SidebarProps) {
   return (
     <S.Wrapper>
@@ -43,14 +44,20 @@ export function Sidebar ({
           <S.FileItemContainer
             key={file.id}
             active={file.active}
-            onClick={() => handleSelectedFile({ ...file })}
           >
             <FileIcon />
-            <S.FileName>{file.name}</S.FileName>
+            <S.FileName
+              onClick={(e) => {
+                e.preventDefault()
+                handleSelectedFile({ ...file })
+              }}
+            >
+              {file.name}
+            </S.FileName>
 
             {!file.active && (
               <S.ButtonDelete>
-                <DeleteIcon />
+                <DeleteIcon onClick={() => handleRemoveFile(file.id)} />
               </S.ButtonDelete>
             )}
 

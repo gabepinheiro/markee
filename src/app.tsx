@@ -78,12 +78,17 @@ function App () {
     setSelectedFile({ ...newFile })
   }
 
+  const handleRemoveFile = (id: string) => (
+    setFiles(files => files.filter(file => file.id !== id))
+  )
+
   return (
     <S.Container>
       <Sidebar
         files={files}
         handleAddFile={handleAddFile}
         handleSelectedFile={handleSelectedFile}
+        handleRemoveFile={handleRemoveFile}
       />
       <Content
         inputRef={inputRef}
