@@ -12,6 +12,18 @@ function App () {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>
+
+    if (selectedFile.status === 'editing') {
+      timer = setTimeout(() => {
+        setSelectedFile(file => ({ ...file, status: 'saving' }))
+
+        setTimeout(() => {
+          setSelectedFile(file => ({ ...file, status: 'saved' }))
+        }, 300)
+      }, 300)
+    }
+
     setFiles(files => (
       files.map(file => {
         if (file.id === selectedFile.id) {
@@ -21,6 +33,8 @@ function App () {
         return ({ ...file, active: false })
       })
     ))
+
+    return () => clearTimeout(timer)
   }, [selectedFile])
 
   const handleSelectedFile = (file: FileProps) => {
