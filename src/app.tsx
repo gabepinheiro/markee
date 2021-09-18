@@ -33,6 +33,7 @@ function App () {
     setSelectedFile(file => ({
       ...file,
       content,
+      status: 'editing',
     }))
   }
 
@@ -40,6 +41,7 @@ function App () {
     setSelectedFile(file => ({
       ...file,
       name,
+      status: 'editing',
     }))
   }
 
