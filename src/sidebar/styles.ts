@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components/macro'
-import { FileIcon, Logo } from 'ui/icons'
+import styled, { css, keyframes } from 'styled-components/macro'
+import { FileIcon, Logo, SavingIcon } from 'ui/icons'
 import { ButtonFullWidth } from 'ui/button'
 import { FileProps } from './types'
 
@@ -91,6 +91,15 @@ export const FileName = styled.a`
 
 type FileItemContainerProps = Pick<FileProps, 'active'>
 
+const rotation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`
+
 export const FileItemContainer = styled.li<FileItemContainerProps>`
   ${({ theme, active }) => css`
     color: ${theme.colors.white};
@@ -140,5 +149,9 @@ export const FileItemContainer = styled.li<FileItemContainerProps>`
         opacity: 1;
       }
     `}
+
+    ${SavingIcon} {
+      animation: ${rotation} 1s infinite linear;
+    }
   `}
 `
