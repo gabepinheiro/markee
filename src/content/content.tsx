@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, RefObject } from 'react'
 import { FileIcon } from 'ui/icons'
 import * as S from './styles'
 import marked from 'marked'
@@ -20,7 +20,11 @@ import('highlight.js').then(hljs => {
   })
 })
 
-function Content () {
+type ContentProps = {
+  inputRef: RefObject<HTMLInputElement>
+}
+
+function Content ({ inputRef }: ContentProps) {
   const [content, setContent] = useState('')
 
   const handleChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,7 +38,7 @@ function Content () {
           <S.Label htmlFor='fileName'>
             <FileIcon />
           </S.Label>
-          <S.InputFileName type='text' id='fileName' defaultValue='Sem título' />
+          <S.InputFileName ref={inputRef} type='text' id='fileName' defaultValue='Sem título' />
         </S.InputWrapper>
       </S.Header>
 
