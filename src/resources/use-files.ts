@@ -110,6 +110,8 @@ export function useFiles () {
     })
 
     setSelectedFile({ ...newFile })
+
+    window.history.pushState(null, '', `/file/${newFile.id}`)
   }
 
   const handleRemoveFile = (id: string) => (
