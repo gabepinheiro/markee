@@ -23,7 +23,7 @@ import('highlight.js').then(hljs => {
 
 type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
-  selectedFile: FileProps
+  selectedFile?: FileProps
   handleChangeContent: (content: string) => void
   handleChangeFileName: (name: string) => void
 }
@@ -33,7 +33,7 @@ function Content ({
 }: ContentProps) {
   // const [content, setContent] = useState('')
 
-  if (!selectedFile.active) {
+  if (!selectedFile?.active) {
     return null
   }
 

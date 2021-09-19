@@ -11,8 +11,31 @@ export function useFiles () {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    async function getFilesStorage () {
+      const filesStorage = await localforage.getItem<FileProps[]>('files')
+
+      if (!filesStorage) {
+        handleAddFile()
+        return
+      }
+
+      setFiles([...filesStorage])
+
+      const fileActive = filesStorage.find(file => file.active)
+
+      if (fileActive) {
+        setSelectedFile(fileActive)
+      }
+    }
+
+    getFilesStorage()
+  }, [])
+
+  useEffect(() => {
     async function updateStorage () {
-      await localforage.setItem('files', files)
+      if (files.length) {
+        await localforage.setItem('files', files)
+      }
     }
 
     updateStorage()
