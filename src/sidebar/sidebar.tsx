@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react'
 import { ButtonFullWidth } from 'ui/button'
 import { FileProps, StatusIconsProps } from './types'
 import * as S from './styles'
@@ -21,7 +22,7 @@ const statusIcons: StatusIconsProps = {
 type SidebarProps = {
   files: FileProps[]
   handleAddFile: () => void
-  handleSelectedFile: (file: FileProps) => void
+  handleSelectedFile: (file: FileProps) => (e: MouseEvent<HTMLAnchorElement>) => void
   handleRemoveFile: (id: string) => void
 }
 
@@ -47,10 +48,7 @@ export function Sidebar ({
           >
             <FileIcon />
             <S.FileName
-              onClick={(e) => {
-                e.preventDefault()
-                handleSelectedFile(file)
-              }}
+              onClick={handleSelectedFile(file)}
             >
               {file.name}
             </S.FileName>

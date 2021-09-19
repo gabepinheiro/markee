@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { MouseEvent, useEffect, useRef, useState } from 'react'
 
 import { FileProps } from 'sidebar/types'
 import { v4 as uuidv4 } from 'uuid'
@@ -67,7 +67,9 @@ export function useFiles () {
     return () => clearTimeout(timer)
   }, [selectedFile])
 
-  const handleSelectedFile = (file: FileProps) => {
+  const handleSelectedFile = (file: FileProps) => (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+
     inputRef.current?.focus()
 
     setSelectedFile({ ...file, active: true })
