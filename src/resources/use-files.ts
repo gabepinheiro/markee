@@ -73,6 +73,8 @@ export function useFiles () {
     inputRef.current?.focus()
 
     setSelectedFile({ ...file, active: true })
+
+    window.history.pushState(null, '', `/file/${file.id}`)
   }
 
   const handleChangeContent = (content: string) => {
