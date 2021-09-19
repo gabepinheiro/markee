@@ -49,7 +49,7 @@ export function Sidebar ({
             <S.FileName
               onClick={(e) => {
                 e.preventDefault()
-                handleSelectedFile({ ...file })
+                handleSelectedFile(file)
               }}
             >
               {file.name}

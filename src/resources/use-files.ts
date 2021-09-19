@@ -37,7 +37,7 @@ export function useFiles () {
   const handleSelectedFile = (file: FileProps) => {
     inputRef.current?.focus()
 
-    setSelectedFile({ ...file })
+    setSelectedFile({ ...file, active: true })
   }
 
   const handleChangeContent = (content: string) => {

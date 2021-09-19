@@ -33,6 +33,10 @@ function Content ({
 }: ContentProps) {
   // const [content, setContent] = useState('')
 
+  if (!selectedFile.active) {
+    return null
+  }
+
   return (
     <S.ContentContainer>
       <S.Header>
@@ -46,6 +50,7 @@ function Content ({
             id='fileName'
             value={selectedFile.name}
             onChange={(e) => handleChangeFileName(e.target.value)}
+            autoFocus
           />
         </S.InputWrapper>
       </S.Header>
@@ -59,7 +64,7 @@ function Content ({
       </S.MarkdownEditorContainer>
 
       <S.MarkdownPreview
-        dangerouslySetInnerHTML={{ __html: marked(selectedFile.content ?? '') }}
+        dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
       />
     </S.ContentContainer>
   )
