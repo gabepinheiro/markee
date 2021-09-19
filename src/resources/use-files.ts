@@ -3,10 +3,43 @@ import { useEffect, useRef, useState } from 'react'
 import { FileProps } from 'sidebar/types'
 import { v4 as uuidv4 } from 'uuid'
 
+import localforage from 'localforage'
+
 export function useFiles () {
   const [files, setFiles] = useState<FileProps[]>([])
   const [selectedFile, setSelectedFile] = useState<FileProps>({} as FileProps)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    async function getFilesStorage () {
+      const filesStorage = await localforage.getItem<FileProps[]>('files')
+
+      if (!filesStorage) {
+        handleAddFile()
+        return
+      }
+
+      setFiles([...filesStorage])
+
+      const fileActive = filesStorage.find(file => file.active)
+
+      if (fileActive) {
+        setSelectedFile(fileActive)
+      }
+    }
+
+    getFilesStorage()
+  }, [])
+
+  useEffect(() => {
+    async function updateStorage () {
+      if (files.length) {
+        await localforage.setItem('files', files)
+      }
+    }
+
+    updateStorage()
+  }, [files])
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
