@@ -7,11 +7,11 @@ import {
   DeleteIcon,
   EditingIcon,
   FileIcon,
-  Logo,
   PlusIcon,
   SavedIcon,
   SavingIcon,
 } from 'ui/icons'
+import { Logo } from 'ui/logo'
 
 const statusIcons: StatusIconsProps = {
   editing: <EditingIcon />,
