@@ -25,6 +25,7 @@ export function useFiles () {
 
       if (fileActive) {
         setSelectedFile(fileActive)
+        window.history.pushState(null, '', `/file/${fileActive.id}`)
       }
     }
 
