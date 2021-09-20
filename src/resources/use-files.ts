@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { MouseEvent, useEffect, useRef, useState } from 'react'
 
 import { FileProps } from 'sidebar/types'
 import { v4 as uuidv4 } from 'uuid'
@@ -25,6 +25,7 @@ export function useFiles () {
 
       if (fileActive) {
         setSelectedFile(fileActive)
+        window.history.pushState(null, '', `/file/${fileActive.id}`)
       }
     }
 
@@ -67,10 +68,14 @@ export function useFiles () {
     return () => clearTimeout(timer)
   }, [selectedFile])
 
-  const handleSelectedFile = (file: FileProps) => {
+  const handleSelectedFile = (file: FileProps) => (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+
     inputRef.current?.focus()
 
     setSelectedFile({ ...file, active: true })
+
+    window.history.pushState(null, '', `/file/${file.id}`)
   }
 
   const handleChangeContent = (content: string) => {
@@ -106,6 +111,8 @@ export function useFiles () {
     })
 
     setSelectedFile({ ...newFile })
+
+    window.history.pushState(null, '', `/file/${newFile.id}`)
   }
 
   const handleRemoveFile = (id: string) => (
