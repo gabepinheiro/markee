@@ -1,6 +1,8 @@
 import { MouseEvent } from 'react'
 import { ButtonFullWidth } from 'ui/button'
-import { FileProps, StatusIconsProps } from './types'
+import { FileProps } from 'resources/files/types'
+import { StatusIconsProps } from 'resources/status-icon-types'
+import { Logo } from 'ui/logo'
 import * as S from './styles'
 
 import {
@@ -11,7 +13,6 @@ import {
   SavedIcon,
   SavingIcon,
 } from 'ui/icons'
-import { Logo } from 'ui/logo'
 
 const statusIcons: StatusIconsProps = {
   editing: <EditingIcon />,

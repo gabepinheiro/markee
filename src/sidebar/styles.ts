@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components/macro'
 import { FileIcon, SavingIcon } from 'ui/icons'
 import { ButtonFullWidth } from 'ui/button'
-import { FileProps } from './types'
+import { FileProps } from 'resources/files/types'
 import { Logo } from 'ui/logo'
 
 export const Wrapper = styled.aside`

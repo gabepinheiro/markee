@@ -1,6 +1,6 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react'
 
-import { FileProps } from 'sidebar/types'
+import { FileProps } from './types'
 import { v4 as uuidv4 } from 'uuid'
 
 import localforage from 'localforage'

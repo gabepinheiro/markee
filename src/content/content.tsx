@@ -2,10 +2,9 @@ import { RefObject } from 'react'
 import { FileIcon } from 'ui/icons'
 import * as S from './styles'
 import marked from 'marked'
-// import highligt from 'highlight.js'
 
 import 'highlight.js/styles/github.css'
-import { FileProps } from 'sidebar/types'
+import { FileProps } from 'resources/files/types'
 
 import('highlight.js').then(hljs => {
   const h = hljs.default
@@ -31,8 +30,6 @@ type ContentProps = {
 function Content ({
   inputRef, selectedFile, handleChangeContent, handleChangeFileName,
 }: ContentProps) {
-  // const [content, setContent] = useState('')
-
   if (!selectedFile?.active) {
     return null
   }

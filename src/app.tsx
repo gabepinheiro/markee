@@ -2,7 +2,7 @@ import * as S from './app-styles'
 
 import { Sidebar } from 'sidebar'
 import { Content } from 'content'
-import { useFiles } from 'resources/use-files'
+import { useFiles } from 'resources/files/use-files'
 
 function App () {
   const {
