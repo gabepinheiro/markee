@@ -5,5 +5,5 @@ export const Container = styled.div`
   height: 100%;
 
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 300px auto;
 `
