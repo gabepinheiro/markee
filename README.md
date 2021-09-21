@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Markee App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 💻 Sobre o projeto
 
-## Available Scripts
+É um projeto desenvolvido durante o Bootcamp de React.js da [Brainn.co](https://brainn.co/)
 
-In the project directory, you can run:
+Demonstração do app: [Markee App](https://markee-app-gabee.netlify.app/).
 
-### `yarn start`
+Sobre o programa de formação - [Bootcamp React.js Brainn.co](https://b-academy.brainn.co/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🚀 Como executar o projeto
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Pré-requisitos
 
-### `yarn test`
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/). 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Rode o seguinte comando para instalar as dependências do projeto:
 
-### `yarn build`
+```bash
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+yarn install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Com tudo pronto, você pode iniciar o aplicativo com:
 
-### `yarn eject`
+```bash
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+yarn dev
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Abrir [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Comandos
 
-## Learn More
+- `dev`: runs your application on `localhost:3000`.
+- `build`: creates the production build version.
+- `lint`: runs the linter in all components.
+- `lint:fix`: runs the linter to fix problems in all components.
+- `type-check`: runs the typescript to type check in all components.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tecnologias utilizadas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React.js](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Marked](https://github.com/markedjs/marked)
+- [Styled-components](https://styled-components.com/)
+- [Eslint](https://eslint.org/)
+- [Husky](https://github.com/typicode/husky)
