@@ -55,8 +55,8 @@ export function Sidebar ({
             </S.FileName>
 
             {!file.active && (
-              <S.ButtonDelete>
-                <DeleteIcon onClick={() => handleRemoveFile(file.id)} />
+              <S.ButtonDelete onClick={() => handleRemoveFile(file.id)}>
+                <DeleteIcon />
               </S.ButtonDelete>
             )}
 

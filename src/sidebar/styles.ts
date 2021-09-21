@@ -142,8 +142,6 @@ export const FileItemContainer = styled.li<FileItemContainerProps>`
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          height: 20px;
-          width:20px;
         }
       }
     `}
