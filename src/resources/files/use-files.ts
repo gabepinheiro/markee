@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react'
 
 import { FileProps } from './types'
 import { v4 as uuidv4 } from 'uuid'
@@ -7,7 +7,6 @@ import localforage from 'localforage'
 
 export function useFiles () {
   const [files, setFiles] = useState<FileProps[]>([])
-  const [selectedFile, setSelectedFile] = useState<FileProps>({} as FileProps)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -19,78 +18,105 @@ export function useFiles () {
         return
       }
 
-      setFiles([...filesStorage])
+      setFiles(filesStorage)
 
-      const fileActive = filesStorage.find(file => file.active)
-
-      if (fileActive) {
-        setSelectedFile(fileActive)
-        window.history.pushState(null, '', `/file/${fileActive.id}`)
-      }
+      const file = filesStorage.find(file => file.active)
+      window.history.replaceState(null, '', `/file/${file?.id}`)
     }
 
     getFilesStorage()
   }, [])
 
   useEffect(() => {
-    async function updateStorage () {
-      if (files.length) {
-        await localforage.setItem('files', files)
-      }
-    }
-
-    updateStorage()
+    localforage.setItem('files', files)
   }, [files])
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
 
-    if (selectedFile.status === 'editing') {
+    function updateStatus () {
+      const file = files.find(file => file.active)
+
+      if (!file || file.status !== 'editing') {
+        return null
+      }
+
       timer = setTimeout(() => {
-        setSelectedFile(file => ({ ...file, status: 'saving' }))
+        setFiles(files => files.map(file => {
+          if (file.active) {
+            return {
+              ...file,
+              status: 'saving',
+            }
+          }
+
+          return file
+        }))
 
         setTimeout(() => {
-          setSelectedFile(file => ({ ...file, status: 'saved' }))
+          setFiles(files => files.map(file => {
+            if (file.active) {
+              return {
+                ...file,
+                status: 'saved',
+              }
+            }
+
+            return file
+          }))
         }, 300)
       }, 300)
     }
 
-    setFiles(files => (
-      files.map(file => {
-        if (file.id === selectedFile.id) {
-          return ({ ...selectedFile, active: true })
-        }
-
-        return ({ ...file, active: false })
-      })
-    ))
+    updateStatus()
 
     return () => clearTimeout(timer)
-  }, [selectedFile])
+  }, [files])
 
-  const handleSelectedFile = (file: FileProps) => (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleSelectedFile = (id: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
 
     inputRef.current?.focus()
 
-    setSelectedFile({ ...file, active: true })
+    setFiles(files => files.map(file => {
+      return {
+        ...file,
+        active: file.id === id,
+      }
+    }))
 
-    window.history.pushState(null, '', `/file/${file.id}`)
+    const newFileActive = files.find(file => file.id === id)
+
+    window.history.replaceState(null, '', `/file/${newFileActive?.id}`)
   }
 
-  const handleChangeContent = (content: string) => {
-    setSelectedFile(file => ({
-      ...file,
-      content,
-      status: 'editing',
+  const handleChangeContent = (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => {
+    e.preventDefault()
+
+    setFiles(files => files.map(file => {
+      if (file.id === id) {
+        return {
+          ...file,
+          content: e.target.value,
+          status: 'editing',
+        }
+      }
+
+      return file
     }))
   }
 
-  const handleChangeFileName = (name: string) => {
-    setSelectedFile(file => ({
-      ...file,
-      name,
-      status: 'editing',
+  const handleChangeFileName = (id: string) => (e: ChangeEvent<HTMLInputElement>) => {
+    setFiles(files => files.map(file => {
+      if (file.id === id) {
+        return {
+          ...file,
+          name: e.target.value,
+          status: 'editing',
+        }
+      }
+
+      return file
     }))
   }
 
@@ -105,14 +131,12 @@ export function useFiles () {
       status: 'saved',
     }
 
-    setFiles(prev => {
-      const prevState = prev.map(file => ({ ...file, active: false }))
-      return [...prevState, newFile]
+    setFiles(prevState => {
+      const filesDisabled = prevState.map(file => ({ ...file, active: false }))
+      return [...filesDisabled, newFile]
     })
 
-    setSelectedFile({ ...newFile })
-
-    window.history.pushState(null, '', `/file/${newFile.id}`)
+    window.history.replaceState(null, '', `/file/${newFile.id}`)
   }
 
   const handleRemoveFile = (id: string) => (
@@ -121,7 +145,6 @@ export function useFiles () {
 
   return {
     files,
-    selectedFile,
     inputRef,
     handleAddFile,
     handleRemoveFile,

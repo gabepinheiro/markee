@@ -7,7 +7,6 @@ import { useFiles } from 'resources/files/use-files'
 function App () {
   const {
     files,
-    selectedFile,
     inputRef,
     handleAddFile,
     handleRemoveFile,
@@ -26,7 +25,7 @@ function App () {
       />
       <Content
         inputRef={inputRef}
-        selectedFile={selectedFile}
+        file={files.find(file => file.active)}
         handleChangeContent={handleChangeContent}
         handleChangeFileName={handleChangeFileName}
       />
