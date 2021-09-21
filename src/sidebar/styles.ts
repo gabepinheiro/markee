@@ -114,6 +114,12 @@ export const FileItemContainer = styled.li<FileItemContainerProps>`
 
     transition: background 300ms ease-in-out;
 
+    ${FileName}{
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
     ${FileIcon} {
       opacity: 0.6;
     }
