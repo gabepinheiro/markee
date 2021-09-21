@@ -41,7 +41,7 @@ export function Sidebar ({
         Adicionar arquivo
       </ButtonFullWidth>
 
-      <S.List>
+      <S.FileList>
         {files.map((file) => (
           <S.FileItemContainer
             key={file.id}
@@ -65,7 +65,7 @@ export function Sidebar ({
             {!!file.active && statusIcons[file.status]}
           </S.FileItemContainer>
         ))}
-      </S.List>
+      </S.FileList>
     </S.Wrapper>
   )
 }

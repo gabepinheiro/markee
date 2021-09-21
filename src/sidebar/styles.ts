@@ -57,7 +57,7 @@ export const Title = styled.h2`
   `}
 `
 
-export const List = styled.ul`
+export const FileList = styled.ul`
   list-style: none;
   width:100%;
   margin: 0;
