@@ -38,6 +38,7 @@ export const InputFileName = styled.input`
     color: ${theme.colors.black};
     padding:0 16px;
     outline: none;
+    width:100%;
   `}
 `
 

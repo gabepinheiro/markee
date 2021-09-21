@@ -1,13 +1,14 @@
 import { MouseEvent } from 'react'
 import { ButtonFullWidth } from 'ui/button'
-import { FileProps, StatusIconsProps } from './types'
+import { FileProps } from 'resources/files/types'
+import { StatusIconsProps } from 'resources/status-icon-types'
+import { Logo } from 'ui/logo'
 import * as S from './styles'
 
 import {
   DeleteIcon,
   EditingIcon,
   FileIcon,
-  Logo,
   PlusIcon,
   SavedIcon,
   SavingIcon,
@@ -22,7 +23,7 @@ const statusIcons: StatusIconsProps = {
 type SidebarProps = {
   files: FileProps[]
   handleAddFile: () => void
-  handleSelectedFile: (file: FileProps) => (e: MouseEvent<HTMLAnchorElement>) => void
+  handleSelectedFile: (id: string) => (e: MouseEvent<HTMLAnchorElement>) => void
   handleRemoveFile: (id: string) => void
 }
 
@@ -35,12 +36,15 @@ export function Sidebar ({
 
       <S.Title>Arquivos</S.Title>
 
-      <ButtonFullWidth onClick={handleAddFile}>
+      <ButtonFullWidth
+        title='Adicionar novo arquivo'
+        onClick={handleAddFile}
+      >
         <PlusIcon />
         Adicionar arquivo
       </ButtonFullWidth>
 
-      <S.List>
+      <S.FileList>
         {files.map((file) => (
           <S.FileItemContainer
             key={file.id}
@@ -48,21 +52,27 @@ export function Sidebar ({
           >
             <FileIcon />
             <S.FileName
-              onClick={handleSelectedFile(file)}
+              href={`/file/${file.id}`}
+              onClick={handleSelectedFile(file.id)}
             >
-              {file.name}
+              {file.name.length >= 13
+                ? file.name.substring(0, 13) + '...'
+                : file.name}
             </S.FileName>
 
             {!file.active && (
-              <S.ButtonDelete>
-                <DeleteIcon onClick={() => handleRemoveFile(file.id)} />
+              <S.ButtonDelete
+                title={`Remover o arquivo ${file.name}`}
+                onClick={() => handleRemoveFile(file.id)}
+              >
+                <DeleteIcon />
               </S.ButtonDelete>
             )}
 
-            {!!file.active && statusIcons[file.status]}
+            {file.active && statusIcons[file.status]}
           </S.FileItemContainer>
         ))}
-      </S.List>
+      </S.FileList>
     </S.Wrapper>
   )
 }

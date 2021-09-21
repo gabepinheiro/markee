@@ -1,7 +1,8 @@
 import styled, { css, keyframes } from 'styled-components/macro'
-import { FileIcon, Logo, SavingIcon } from 'ui/icons'
+import { FileIcon, SavingIcon } from 'ui/icons'
 import { ButtonFullWidth } from 'ui/button'
-import { FileProps } from './types'
+import { FileProps } from 'resources/files/types'
+import { Logo } from 'ui/logo'
 
 export const Wrapper = styled.aside`
   ${({ theme }) => css`
@@ -56,7 +57,7 @@ export const Title = styled.h2`
   `}
 `
 
-export const List = styled.ul`
+export const FileList = styled.ul`
   list-style: none;
   width:100%;
   margin: 0;
@@ -103,7 +104,6 @@ const rotation = keyframes`
 export const FileItemContainer = styled.li<FileItemContainerProps>`
   ${({ theme, active }) => css`
     color: ${theme.colors.white};
-    cursor: pointer;
     border-radius: 6px;
     width:100%;
     display: flex;
@@ -112,6 +112,12 @@ export const FileItemContainer = styled.li<FileItemContainerProps>`
     padding: 8px 14px;
 
     transition: background 300ms ease-in-out;
+
+    ${FileName}{
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
 
     ${FileIcon} {
       opacity: 0.6;
@@ -135,8 +141,6 @@ export const FileItemContainer = styled.li<FileItemContainerProps>`
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          height: 20px;
-          width:20px;
         }
       }
     `}

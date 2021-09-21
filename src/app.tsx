@@ -2,12 +2,11 @@ import * as S from './app-styles'
 
 import { Sidebar } from 'sidebar'
 import { Content } from 'content'
-import { useFiles } from 'resources/use-files'
+import { useFiles } from 'resources/files/use-files'
 
 function App () {
   const {
     files,
-    selectedFile,
     inputRef,
     handleAddFile,
     handleRemoveFile,
@@ -26,7 +25,7 @@ function App () {
       />
       <Content
         inputRef={inputRef}
-        selectedFile={selectedFile}
+        file={files.find(file => file.active)}
         handleChangeContent={handleChangeContent}
         handleChangeFileName={handleChangeFileName}
       />

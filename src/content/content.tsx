@@ -1,11 +1,10 @@
-import { RefObject } from 'react'
+import { RefObject, ChangeEvent } from 'react'
 import { FileIcon } from 'ui/icons'
+import { FileProps } from 'resources/files/types'
 import * as S from './styles'
 import marked from 'marked'
-// import highligt from 'highlight.js'
 
 import 'highlight.js/styles/github.css'
-import { FileProps } from 'sidebar/types'
 
 import('highlight.js').then(hljs => {
   const h = hljs.default
@@ -23,17 +22,15 @@ import('highlight.js').then(hljs => {
 
 type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
-  selectedFile?: FileProps
-  handleChangeContent: (content: string) => void
-  handleChangeFileName: (name: string) => void
+  file?: FileProps
+  handleChangeContent: (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => void
+  handleChangeFileName: (id: string) => (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 function Content ({
-  inputRef, selectedFile, handleChangeContent, handleChangeFileName,
+  inputRef, file, handleChangeContent, handleChangeFileName,
 }: ContentProps) {
-  // const [content, setContent] = useState('')
-
-  if (!selectedFile?.active) {
+  if (!file) {
     return null
   }
 
@@ -48,8 +45,8 @@ function Content ({
             ref={inputRef}
             type='text'
             id='fileName'
-            value={selectedFile.name}
-            onChange={(e) => handleChangeFileName(e.target.value)}
+            value={file.name}
+            onChange={handleChangeFileName(file.id)}
             autoFocus
           />
         </S.InputWrapper>
@@ -58,13 +55,13 @@ function Content ({
       <S.MarkdownEditorContainer>
         <S.MarkdownTextArea
           placeholder='Digite aqui seu markdown'
-          value={selectedFile.content}
-          onChange={(e) => handleChangeContent(e.target.value)}
+          value={file.content}
+          onChange={handleChangeContent(file.id)}
         />
       </S.MarkdownEditorContainer>
 
       <S.MarkdownPreview
-        dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
+        dangerouslySetInnerHTML={{ __html: marked(file.content) }}
       />
     </S.ContentContainer>
   )
