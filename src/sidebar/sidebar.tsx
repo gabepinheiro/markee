@@ -51,7 +51,9 @@ export function Sidebar ({
             <S.FileName
               onClick={handleSelectedFile(file)}
             >
-              {file.name}
+              {file.name.length >= 13
+                ? file.name.substring(0, 13) + '...'
+                : file.name}
             </S.FileName>
 
             {!file.active && (
