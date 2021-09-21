@@ -104,7 +104,6 @@ const rotation = keyframes`
 export const FileItemContainer = styled.li<FileItemContainerProps>`
   ${({ theme, active }) => css`
     color: ${theme.colors.white};
-    cursor: pointer;
     border-radius: 6px;
     width:100%;
     display: flex;
