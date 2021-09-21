@@ -19,17 +19,17 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 Rode o seguinte comando para instalar as dependências do projeto:
 
 ```bash
-
+npm install
+# or
 yarn install
-
 ```
 
 Com tudo pronto, você pode iniciar o aplicativo com:
 
 ```bash
-
+npm run dev
+# or
 yarn dev
-
 ```
 
 Abrir [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
