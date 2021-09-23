@@ -13,9 +13,9 @@
 
 <br/>
 
-# Markee App
+# Markee App.
 
-## 💻 Sobre o projeto
+## 💻 Sobre o projeto.
 
 É um projeto desenvolvido durante o Bootcamp de React.js da [Brainn.co](https://brainn.co/) com o objetivo de construir um app de editor [Markdown](https://docs.pipz.com/central-de-ajuda/learning-center/guia-basico-de-markdown#open).
 
@@ -23,9 +23,9 @@ Demonstração do app: [Markee App](https://markee-app-gabee.netlify.app/).
 
 Sobre o programa de formação - [Bootcamp React.js Brainn.co](https://b-academy.brainn.co/).
 
-## 🚀 Como executar o projeto
+## 🚀 Como executar o projeto.
 
-### Pré-requisitos
+### Pré-requisitos.
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
@@ -35,7 +35,7 @@ Primeiro abra o seu terminal e rode o seguinte comando para fazer o download do 
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/gabepinheiro/markee>
+$ git clone https://github.com/gabepinheiro/markee
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd markee
@@ -59,7 +59,7 @@ yarn dev
 
 Abrir [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-## Comandos
+## ⚙️Comandos.
 
 - `dev`: runs your application on `localhost:3000`.
 - `build`: creates the production build version.
@@ -67,7 +67,7 @@ Abrir [http://localhost:3000](http://localhost:3000) com seu navegador para ver 
 - `lint:fix`: runs the linter to fix problems in all components.
 - `type-check`: runs the typescript to type check in all components.
 
-## Tecnologias utilizadas
+## 🛠 Tecnologias utilizadas.
 
 - [React.js](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
