@@ -45,6 +45,8 @@ export const InputFileName = styled.input`
 export const MarkdownEditorContainer = styled.section`
   border-right: 2px solid rgba(30, 41, 59, 0.12);
   height: 95%;
+
+
   /* padding-right: 32px; */
 `
 
@@ -61,6 +63,10 @@ export const MarkdownTextArea = styled.textarea`
     resize: none;
     width: 100%;
     height: 100%;
+
+    &::-webkit-scrollbar {
+      all: unset;
+    }
   `}
 `
 
@@ -71,10 +77,9 @@ export const MarkdownPreview = styled.section`
     height: 95%;
     overflow: auto;
 
-    /* h1 {
-      color: ${theme.colors.black};
-      font-size: ${theme.font.sizes.large};
-    } */
+    &::-webkit-scrollbar {
+      all: unset;
+    }
 
     h1, h2, h3, h4, h5, h6 {
       margin-top: 0;
