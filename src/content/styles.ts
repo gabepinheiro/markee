@@ -33,7 +33,7 @@ export const InputFileName = styled.input`
   ${({ theme }) => css`
     background: none;
     border:0;
-    font-size: ${theme.font.sizes.small};
+    font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
     padding:0 16px;
@@ -54,9 +54,10 @@ export const MarkdownTextArea = styled.textarea`
   ${({ theme }) => css`
     background: ${theme.colors.white};
     border:0;
-    color: ${theme.colors.black};
+    color: rgba(30, 41, 59, 0,86);
     font-family: "Inconsolata", monospace;
-    font-size: ${theme.font.sizes.medium};
+    font-size: ${theme.font.sizes.small};
+    font-weight: ${theme.font.normal};
     line-height: 24px;
     opacity: 0.86;
     outline: none;
@@ -83,6 +84,16 @@ export const MarkdownPreview = styled.section`
 
     h1, h2, h3, h4, h5, h6 {
       margin-top: 0;
+    }
+
+    a:link,
+    a:visited {
+      color: rgb(3, 102, 214);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   `}
 `
