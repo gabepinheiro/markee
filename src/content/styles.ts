@@ -71,7 +71,7 @@ export const MarkdownTextArea = styled.textarea`
   `}
 `
 
-export const MarkdownPreview = styled.section`
+export const MarkdownPreview = styled.output`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
     padding-left: 32px;
