@@ -1,24 +1,10 @@
-import { RefObject, ChangeEvent } from 'react'
+import { RefObject, ChangeEvent, useEffect } from 'react'
 import { FileIcon } from 'ui/icons'
 import { FileProps } from 'resources/files/types'
 import * as S from './styles'
 import marked from 'marked'
 
-import 'highlight.js/styles/github.css'
-
-import('highlight.js').then(hljs => {
-  const h = hljs.default
-
-  marked.setOptions({
-    highlight: (code, language) => {
-      if (language && h.getLanguage(language)) {
-        return h.highlight(code, { language }).value
-      }
-
-      return h.highlightAuto(code).value
-    },
-  })
-})
+import 'highlight.js/styles/atom-one-dark.css'
 
 type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
@@ -30,6 +16,17 @@ type ContentProps = {
 function Content ({
   inputRef, file, handleChangeContent, handleChangeFileName,
 }: ContentProps) {
+  useEffect(() => {
+    async function loadHljs () {
+      const { default: h } = await import('highlight.js')
+
+      h.configure({ ignoreUnescapedHTML: true })
+      h.highlightAll()
+    }
+
+    loadHljs()
+  })
+
   if (!file) {
     return null
   }
