@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/macro'
 export const ContentContainer = styled.main`
   ${({ theme }) => css`
     background: ${theme.colors.white};
-    padding: 0 32px;
+    padding: 0 24px;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -64,7 +64,7 @@ export const MarkdownTextArea = styled.textarea`
     resize: none;
     width: 100%;
     height: 100%;
-    padding-right: 32px;
+    padding-right: 24px;
 
     &::-webkit-scrollbar {
       all: unset;
@@ -75,7 +75,7 @@ export const MarkdownTextArea = styled.textarea`
 export const MarkdownPreview = styled.output`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
-    padding-left: 32px;
+    padding-left: 24px;
     height: 95%;
     overflow: auto;
 
