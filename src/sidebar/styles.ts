@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components/macro'
+import media from 'styled-media-query'
 import { FileIcon, SavingIcon } from 'ui/icons'
 import { ButtonFullWidth } from 'ui/button'
 import { FileProps } from 'resources/files/types'
@@ -11,19 +12,31 @@ export const Wrapper = styled.aside`
     width:100%;
     height: 100%;
 
-    padding: 0 32px;
+    padding: 26px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    ${media.lessThan('medium')`
+      height: 40vh;
+      justify-content: space-between;
+    `}
+
     ${Logo} {
-      margin-top: 47px;
       margin-bottom: 50px;
+
+      ${media.lessThan('medium')`
+        margin-bottom: 20px;
+    `}
     }
 
     ${ButtonFullWidth} {
       margin-bottom: 34px;
+
+      ${media.lessThan('medium')`
+        margin-bottom: 25px;
+    `}
     }
   `}
 `
@@ -36,6 +49,10 @@ export const Title = styled.h2`
     font-weight: ${theme.font.bold};
 
     margin-bottom: 35px;
+
+    ${media.lessThan('medium')`
+      margin-bottom: 20px;
+    `}
 
     display: flex;
     align-items:center;
@@ -63,11 +80,14 @@ export const FileList = styled.ul`
   margin: 0;
   padding: 0;
 
-  margin-bottom: 32px;
-
   display:flex;
   flex-direction: column;
   gap: 8px;
+
+  ${media.lessThan('medium')`
+    flex-direction: row;
+    overflow: auto;
+  `}
 `
 
 export const ButtonDelete = styled.button`
@@ -113,10 +133,19 @@ export const FileItemContainer = styled.li<FileItemContainerProps>`
 
     transition: background 300ms ease-in-out;
 
+    ${media.lessThan('medium')`
+      max-width:200px;
+
+    `}
+
     ${FileName}{
+      width: 30%;
       display: flex;
       align-items: center;
       height: 100%;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     ${FileIcon} {

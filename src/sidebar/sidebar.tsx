@@ -55,9 +55,7 @@ export function Sidebar ({
               href={`/file/${file.id}`}
               onClick={handleSelectedFile(file.id)}
             >
-              {file.name.length >= 13
-                ? file.name.substring(0, 13) + '...'
-                : file.name}
+              {file.name}
             </S.FileName>
 
             {!file.active && (

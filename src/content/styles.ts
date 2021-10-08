@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/macro'
+import media from 'styled-media-query'
 
 export const ContentContainer = styled.main`
   ${({ theme }) => css`
@@ -11,12 +12,20 @@ export const ContentContainer = styled.main`
     grid-row-gap: 16px;
 
     overflow: hidden;
+
+    ${media.lessThan('medium')`
+      display:block;
+    `}
   `}
 `
 
 export const Header = styled.section`
   grid-column: 1 / 3;
   padding-top: 32px;
+
+  ${media.lessThan('medium')`
+    padding-bottom: 24px;
+  `}
 `
 
 export const InputWrapper = styled.div`
@@ -46,8 +55,11 @@ export const MarkdownEditorContainer = styled.section`
   border-right: 2px solid rgba(30, 41, 59, 0.12);
   height: 95%;
 
-
-  /* padding-right: 32px; */
+  ${media.lessThan('medium')`
+    border:0;
+    border-bottom: 2px solid rgba(30, 41, 59, 0.12);
+    height: 25vh;
+  `}
 `
 
 export const MarkdownTextArea = styled.textarea`
@@ -78,6 +90,10 @@ export const MarkdownPreview = styled.output`
     padding-left: 24px;
     height: 95%;
     overflow: auto;
+
+    ${media.lessThan('medium')`
+      overflow: none;
+    `}
 
     overflow-wrap: break-word;
 

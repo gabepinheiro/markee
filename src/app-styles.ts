@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import media from 'styled-media-query'
 
 export const Container = styled.div`
   width: 100%;
@@ -6,4 +7,8 @@ export const Container = styled.div`
 
   display: grid;
   grid-template-columns: 300px auto;
+
+  ${media.lessThan('medium')`
+    display: block;
+  `}
 `
